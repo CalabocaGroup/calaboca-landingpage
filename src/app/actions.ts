@@ -1,6 +1,7 @@
 "use server";
 
 import { getSupabaseAdmin } from "@/lib/supabase";
+import { sendWelcomeEmail } from "@/lib/email";
 
 export type SubscribeState =
   | { status: "idle" }
@@ -27,8 +28,11 @@ export async function subscribeToWaitlist(
     if (error.code === "23505") {
       return { status: "success", message: "You're already on the list!" };
     }
+    console.error("[waitlist] supabase insert failed", error);
     return { status: "error", message: "Something went wrong. Try again." };
   }
+
+  await sendWelcomeEmail(email);
 
   return { status: "success", message: "You're in! We'll be in touch." };
 }
