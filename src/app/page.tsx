@@ -1,3 +1,4 @@
+import Image from "next/image";
 import WaitlistForm from "./waitlist-form";
 
 export default function Home() {
@@ -13,9 +14,15 @@ export default function Home() {
       </div>
 
       {/* Logo */}
-      <h1 className="animate-fade-in-up [animation-delay:150ms] text-5xl sm:text-7xl font-bold tracking-tight select-none">
-        calab<span className="inline-block w-[0.55em] h-[0.55em] rounded-full bg-yellow align-[-0.01em] mx-[0.02em]" />ca
-      </h1>
+      <Image
+        src="/calaboca-dark.png"
+        alt="Calaboca"
+        width={2100}
+        height={517}
+        loading="eager"
+        fetchPriority="high"
+        className="animate-fade-in-up [animation-delay:150ms] h-14 sm:h-20 w-auto select-none"
+      />
 
       {/* Tagline */}
       <p className="animate-fade-in-up [animation-delay:300ms] mt-5 text-lg sm:text-xl text-foreground/50 text-center max-w-sm">
